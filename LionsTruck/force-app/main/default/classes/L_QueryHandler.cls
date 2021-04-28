@@ -5,7 +5,7 @@ public inherited sharing class L_QueryHandler {
         List<OpportunityLineItem> oppLIsFromDB = new List<OpportunityLineItem>();
         Map<Id, List<OpportunityLineItem>> oppLIsPerOppIdMap = new Map<Id, List<OpportunityLineItem>>();
         try{
-            oppLIsFromDB = [select id, Quantity, L_AddedService__c, OpportunityId  from OpportunityLineItem where OpportunityId IN :oppIds];
+            oppLIsFromDB = [select id, Quantity, L_AddedService__c, OpportunityId, TotalPrice from OpportunityLineItem where OpportunityId IN :oppIds];
             
             for(OpportunityLineItem oppLIObj : oppLIsFromDB){
                 if(oppLIsPerOppIdMap.containsKey(oppLIObj.OpportunityId)){
