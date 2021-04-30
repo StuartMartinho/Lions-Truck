@@ -2,10 +2,26 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>51.0</apiVersion>
     <assignments>
+        <name>Adding_to_Order_Collection</name>
+        <label>Adding to Order Collection</label>
+        <locationX>264</locationX>
+        <locationY>758</locationY>
+        <assignmentItems>
+            <assignToReference>OrderCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>OrderAux</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_OrderAux_to_Null</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Set_Opportunity_to</name>
         <label>Set Opp Processing Stage</label>
         <locationX>176</locationX>
-        <locationY>974</locationY>
+        <locationY>1214</locationY>
         <assignmentItems>
             <assignToReference>Get_Opportunity.StageName</assignToReference>
             <operator>Assign</operator>
@@ -44,13 +60,6 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>OrderCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>OrderAux</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>OrderAux.EffectiveDate</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -62,6 +71,29 @@
             <operator>Assign</operator>
             <value>
                 <stringValue>Draft</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.ContractId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.ContractId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Adding_to_Order_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_OrderAux_to_Null</name>
+        <label>Set OrderAux to Null</label>
+        <locationX>264</locationX>
+        <locationY>878</locationY>
+        <assignmentItems>
+            <assignToReference>OrderAux</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ResetOrderInstance</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -112,7 +144,7 @@
         <name>Create_Orders</name>
         <label>Create Orders</label>
         <locationX>176</locationX>
-        <locationY>854</locationY>
+        <locationY>1094</locationY>
         <connector>
             <targetReference>Set_Opportunity_to</targetReference>
         </connector>
@@ -164,7 +196,7 @@
         <name>Update_Opportunity</name>
         <label>Update Opportunity</label>
         <locationX>176</locationX>
-        <locationY>1094</locationY>
+        <locationY>1334</locationY>
         <inputReference>Get_Opportunity</inputReference>
     </recordUpdates>
     <screens>
@@ -211,10 +243,34 @@
         <objectType>Order</objectType>
     </variables>
     <variables>
+        <name>OrderProductAux</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
+        <name>OrderProductCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ResetOrderInstance</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Order</objectType>
     </variables>
 </Flow>
