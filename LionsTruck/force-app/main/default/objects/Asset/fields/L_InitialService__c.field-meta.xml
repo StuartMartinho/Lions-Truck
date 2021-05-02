@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L_InitialService__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To track if this Truck was purchased with service included</description>
+    <externalId>false</externalId>
+    <label>Initial Service</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

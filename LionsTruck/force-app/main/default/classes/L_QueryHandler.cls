@@ -5,7 +5,8 @@ public inherited sharing class L_QueryHandler {
         List<OpportunityLineItem> oppLIsFromDB = new List<OpportunityLineItem>();
         Map<Id, List<OpportunityLineItem>> oppLIsPerOppIdMap = new Map<Id, List<OpportunityLineItem>>();
         try{
-            oppLIsFromDB = [select id, Quantity, L_AddedService__c, OpportunityId, TotalPrice, Product2Id,UnitPrice from OpportunityLineItem where OpportunityId IN :oppIds];
+            oppLIsFromDB = [select id, Quantity, L_AddedService__c, OpportunityId, TotalPrice, Product2Id, UnitPrice, Opportunity.AccountId 
+                            FROM OpportunityLineItem WHERE OpportunityId IN :oppIds];
             
             for(OpportunityLineItem oppLIObj : oppLIsFromDB){
                 if(oppLIsPerOppIdMap.containsKey(oppLIObj.OpportunityId)){
@@ -30,6 +31,18 @@ public inherited sharing class L_QueryHandler {
             throw ex;
         }
         return mapToReturn;
+    }
+    
+    public static List<OpportunityLineItem> getOppLIByOppIdList(Set<Id> oppIds){
+        List<OpportunityLineItem> listToReturn; 
+        try{
+            listToReturn = [SELECT Id, Product2Id, Quantity, TotalPrice, L_AddedService__c, OpportunityId, UnitPrice, Opportunity.AccountId,
+                            Product2.L_Tonnage__c, Product2.L_PS__c, Product2.Name
+                            FROM OpportunityLineItem WHERE OpportunityId IN :oppIds];            
+        }catch(Exception ex){
+            throw ex;
+        }
+        return listToReturn;
     }
     
     public static List<OpportunityLineItem> getOppLIList(Set<Id> oppLiIds){

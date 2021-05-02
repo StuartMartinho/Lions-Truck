@@ -104,17 +104,66 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>OrderAux.ShippingAddress</assignToReference>
+            <assignToReference>OrderAux.ShippingStreet</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Opportunity.Account.ShippingAddress</elementReference>
+                <elementReference>Get_Opportunity.Account.ShippingStreet</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>OrderAux.BillingAddress</assignToReference>
+            <assignToReference>OrderAux.BillingStreet</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Opportunity.Account.BillingAddress</elementReference>
+                <elementReference>Get_Opportunity.Account.BillingStreet</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.ShippingCity</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.Account.ShippingCity</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.BillingCity</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.Account.BillingCity</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.ShippingPostalCode</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.Account.ShippingPostalCode</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.BillingPostalCode</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.Account.BillingPostalCode</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.ShippingCountry</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.Account.ShippingCountry</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.BillingCountry</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.Account.BillingCountry</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OrderAux.ContractId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Opportunity.ContractId</elementReference>
             </value>
         </assignmentItems>
         <connector>

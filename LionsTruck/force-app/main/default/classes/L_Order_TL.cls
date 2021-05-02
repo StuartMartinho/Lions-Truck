@@ -65,22 +65,30 @@ public without sharing class L_Order_TL {
         Map<Id, Opportunity> parentOppMAp = L_QueryHandler.getOpportunitiesMapById(oppIdsSet);
         Map<Id, List<Order>> orderByOppIdMap = L_QueryHandler.getOrdersByOpportunityIdMap(oppIdsSet);
         List<Opportunity> oppsToClose = new List<Opportunity>();
+        List<Opportunity> oppsToCloseAux = new List<Opportunity>();
         
         boolean isOrderPaid = true;
         for(Id oppId : orderByOppIdMap.keySet()){
             isOrderPaid = true;
             for(Order orderObj : orderByOppIdMap.get(oppId)){
                 if(!orderObj.Status.equalsIgnoreCase(L_Constants.ORDERPAID_STATUS)){
-                    isOrderPaid = false;
-                    oppsToClose.add(parentOppMAp.get(orderObj.OpportunityId));
+                    isOrderPaid=false;
                     break;
                 }
             }
+            if(isOrderPaid)
+            {
+                oppsToClose.add(parentOppMAp.get(oppId));
+            }
+            
         }
         
-        setOppsToClose(oppsToClose);
+        if(!oppsToClose.isEmpty())
+        {
+            setOppsToClose(oppsToClose);
+        	update oppsToClose;
+        }
         
-        update oppsToClose;
     }
     
     private static void setOppsToClose(List<Opportunity> oppList)
