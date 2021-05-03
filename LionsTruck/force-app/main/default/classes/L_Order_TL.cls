@@ -71,7 +71,7 @@ public without sharing class L_Order_TL {
         for(Id oppId : orderByOppIdMap.keySet()){
             isOrderPaid = true;
             for(Order orderObj : orderByOppIdMap.get(oppId)){
-                if(!orderObj.Status.equalsIgnoreCase(L_Constants.ORDERPAID_STATUS)){
+                if(!orderObj.Status.equalsIgnoreCase(L_Constants.ORDERRECEIVED_STATUS)){
                     isOrderPaid=false;
                     break;
                 }
@@ -104,7 +104,6 @@ public without sharing class L_Order_TL {
         for(Order orderObj : orderList){
             if(orderObj.Status.equalsIgnoreCase(L_Constants.ORDERPAID_STATUS)){
                 listToReturn.add(orderObj);
-                system.debug('entrou');
             }
         }
         

@@ -18,25 +18,25 @@
         </connector>
     </assignments>
     <decisions>
-        <name>IS_Order_Paid</name>
-        <label>IS Order Paid</label>
+        <name>IS_Order_Received</name>
+        <label>IS Order Received</label>
         <locationX>999</locationX>
         <locationY>982</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Is_Paid</name>
+            <name>Is_Received</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>RelatedOrders_Loop.Status</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Paid</stringValue>
+                    <stringValue>Received</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>RelatedOrders_Loop</targetReference>
             </connector>
-            <label>Is Paid</label>
+            <label>Is Received</label>
         </rules>
     </decisions>
     <interviewLabel>Update Opportunity to Closed {!$Flow.CurrentDateTime}</interviewLabel>
@@ -49,7 +49,7 @@
         <collectionReference>Get_Related_Orders</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>IS_Order_Paid</targetReference>
+            <targetReference>IS_Order_Received</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Get_Opportunity_Parent</targetReference>
@@ -141,7 +141,7 @@
             <field>Status</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Paid</stringValue>
+                <stringValue>Received</stringValue>
             </value>
         </filters>
         <object>Order</object>
