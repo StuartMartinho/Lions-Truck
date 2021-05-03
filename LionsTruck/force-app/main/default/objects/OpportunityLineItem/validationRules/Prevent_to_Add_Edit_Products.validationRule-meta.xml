@@ -5,11 +5,11 @@
     <errorConditionFormula>AND(
     OR(
         AND(
-             TEXT(Opportunity.StageName) =&apos;Processing Orders&apos;,
+             OR(TEXT(Opportunity.StageName) =&apos;Processing Orders&apos;, OR(TEXT(Opportunity.StageName) =&apos;Closed Won&apos;,TEXT(Opportunity.StageName) =&apos;Closed Lost&apos;)),
              NOT(ISNEW())
         ),
         AND(
-             TEXT(Opportunity.StageName) =&apos;Processing Orders&apos;,
+             OR(TEXT(Opportunity.StageName) =&apos;Processing Orders&apos;, OR(TEXT(Opportunity.StageName) =&apos;Closed Won&apos;,TEXT(Opportunity.StageName) =&apos;Closed Lost&apos;)),
              ISNEW()
         )
     )
