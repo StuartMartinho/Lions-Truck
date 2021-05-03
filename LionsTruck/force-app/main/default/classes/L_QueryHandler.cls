@@ -82,5 +82,17 @@ public inherited sharing class L_QueryHandler {
         }
         return mapToReturn;
     }
+    
+    public static List<Asset> getAssetsByAccountIds(Set<Id> accountIds){
+        List<Asset> assetList = new List<Asset>();
+        
+        try{
+            assetList = [SELECT Id, Name FROM Asset WHERE AccountId IN :accountIds];
+        }catch(Exception ex){
+            throw ex;
+        }
+        
+        return assetList;
+    }
 
 }
