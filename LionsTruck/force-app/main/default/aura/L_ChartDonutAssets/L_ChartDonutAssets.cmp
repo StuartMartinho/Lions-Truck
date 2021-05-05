@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="L_ChartController">
+    <aura:attribute name="recordId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler event="force:refreshView" action="{!c.afterRefreshView}" />
+    
+    <ltng:require scripts="{!$Resource.ChartJS}"
+                  afterScriptsLoaded="{!c.scriptsLoaded}" />
+    
+    <div aura:id='chartDonut' id="chartDonut" style="background-color: white;border-radius: 6px;padding-bottom:10px;text-align: center;">
+        <canvas aura:id="donut-chart" id="donut-chart"></canvas>
+    </div>
+    
+    
+</aura:component>

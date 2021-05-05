@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L_CompactLayout</fullName>
+    <fields>OrderNumber</fields>
+    <fields>AccountId</fields>
+    <fields>ContractId</fields>
+    <fields>Status</fields>
+    <fields>TotalAmount</fields>
+    <fields>OpportunityId</fields>
+    <label>L_CompactLayout</label>
+</CompactLayout>

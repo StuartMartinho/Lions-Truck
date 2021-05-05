@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_to_Add_Edit_Products</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    OR(
+        AND(
+             OR(TEXT(Opportunity.StageName) =&apos;Processing Orders&apos;, OR(TEXT(Opportunity.StageName) =&apos;Closed Won&apos;,TEXT(Opportunity.StageName) =&apos;Closed Lost&apos;)),
+             NOT(ISNEW())
+        ),
+        AND(
+             OR(TEXT(Opportunity.StageName) =&apos;Processing Orders&apos;, OR(TEXT(Opportunity.StageName) =&apos;Closed Won&apos;,TEXT(Opportunity.StageName) =&apos;Closed Lost&apos;)),
+             ISNEW()
+        )
+    )
+)</errorConditionFormula>
+    <errorMessage>It&apos;s not possible to Add/Edit products at this Opportunity Stage</errorMessage>
+</ValidationRule>

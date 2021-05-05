@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L_AddedService__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To track if the client wants the service</description>
+    <externalId>false</externalId>
+    <label>Add Service</label>
+    <type>Checkbox</type>
+</CustomField>
