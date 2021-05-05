@@ -5,6 +5,7 @@ public class L_ChartController {
         List<Asset> result = L_QueryHandler.getAssetsByAccountIds(new Set<id>{accountId});
         Map<String, Integer> nameCounterMap = new Map<String, Integer>();
         List<DataSet> dataSet = new List<DataSet>();
+        system.debug('result->'+result.size());
         
         if(result.isEmpty())
         {
@@ -17,7 +18,7 @@ public class L_ChartController {
                 continue;
             }
             Integer counterAux = nameCounterMap.get(assetObj.Name);
-            nameCounterMap.put(assetObj.Name, counterAux++);
+            nameCounterMap.put(assetObj.Name, ++counterAux);
         }
         
         prepareDataSet(dataSet, nameCounterMap);

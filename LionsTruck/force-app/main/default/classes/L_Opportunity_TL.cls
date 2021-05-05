@@ -27,8 +27,6 @@ public without sharing class L_Opportunity_TL {
     public static Map<Id, Opportunity> filterClosedWonOpps(Map<Id, Opportunity> oldOppMap, Map<Id, Opportunity> newOppMap){
         Map<Id, Opportunity> mapToReturn = new Map<Id, Opportunity>();
         for(Opportunity oppObj : newOppMap.values()){
-            system.debug('old Stage->'+ oldOppMap.get(oppObj.id).StageName);
-            system.debug('new Stage->'+ oppObj.StageName);
             
             if(oldOppMap.get(oppObj.id).StageName != oppObj.StageName && oppObj.StageName.equalsIgnoreCase(L_Constants.OPP_CLOSED_STATUS)){
                 mapToReturn.put(oppObj.id, oppObj);

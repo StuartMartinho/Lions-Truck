@@ -94,5 +94,31 @@ public inherited sharing class L_QueryHandler {
         
         return assetList;
     }
+    
+    public static List<Asset> getAssetsWithVINByIds(Set<Id> ids){
+        List<Asset> assetList = new List<Asset>();
+        
+        try{
+            assetList = [SELECT Id, Name, L_VIN__c FROM Asset WHERE Id IN :ids AND L_VIN__c != ''];
+        }catch(Exception ex){
+            throw ex;
+        }
+        
+        return assetList;
+    }
+    
+    public static List<L_CalloutMappingCMDT__mdt> getCalloutMapping(String objectName){
+        
+        List<L_CalloutMappingCMDT__mdt> listToReturn = new List<L_CalloutMappingCMDT__mdt>();
+        
+        try{
+            listToReturn = [SELECT Id, Label, QualifiedApiName, L_JSONAttributeName__c, L_FieldAPIName__c, L_SObjectName__c FROM L_CalloutMappingCMDT__mdt WHERE L_SObjectName__c = :objectName];
+        }catch(Exception ex){
+            throw ex;
+        }
+        
+        return listToReturn;
+            
+    }
 
 }
