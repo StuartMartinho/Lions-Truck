@@ -28,19 +28,11 @@
                 <field>Probability</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ExpectedRevenue</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>L_ServicesAmount__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>StageName</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>L_TrucksQuantity__c</field>
@@ -52,6 +44,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>L_TrucksAmount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>L_ServicesAmount__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

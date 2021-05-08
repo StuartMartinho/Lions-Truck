@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L_AssetCompactLayout</fullName>
+    <fields>Name</fields>
+    <fields>AccountId</fields>
+    <fields>L_VIN__c</fields>
+    <fields>PurchaseDate</fields>
+    <label>L_AssetCompactLayout</label>
+</CompactLayout>

@@ -262,7 +262,7 @@
         <fields>L_Tonnage__c</fields>
         <fields>L_PS__c</fields>
         <fields>ASSET.PURCHASE_DATE</fields>
-        <fields>ASSET.CREATED_DATE</fields>
+        <fields>ASSET.SERIAL_NUMBER</fields>
         <relatedList>RelatedAssetList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -272,6 +272,8 @@
         <fields>L_StartDate__c</fields>
         <fields>L_EndDate__c</fields>
         <fields>L_IsActive__c</fields>
+        <fields>L_AssetSerialNumber__c</fields>
+        <fields>L_AssetVIN__c</fields>
         <relatedList>L_AssetTruckServices__c.L_AccountId__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -279,6 +281,7 @@
         <fields>Asset.NAME</fields>
         <fields>Asset.L_VIN__c</fields>
         <fields>L_InterventionDate__c</fields>
+        <fields>Asset.SERIAL_NUMBER</fields>
         <relatedList>L_ServiceInteraction__c.L_AccountId__c</relatedList>
     </relatedLists>
     <relatedLists>

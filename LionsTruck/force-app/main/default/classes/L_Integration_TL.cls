@@ -12,14 +12,6 @@ public without sharing class L_Integration_TL {
             calloutReq.setEndpoint(endPointUrl);
             calloutReq.setTimeout(timeInMiliSec);
             
-            /*
-			if(!headerDetailsMap.isEmpty()){
-                for(String headerKey : headerDetailsMap.keySet()){
-                    calloutReq.setHeader(headerKey, headerDetailsMap.get(headerKey));
-                }
-            }
-			*/
-            
             calloutReq.setHeader(L_Constants.INT_CLIENTID_APINAME, clientId);
             calloutReq.setHeader(L_Constants.INT_CLIENTSECRET_APINAME, clientSecret);            
             calloutReq.setHeader(L_Constants.INT_CORRELATIONID_APINAME, guid);
@@ -48,9 +40,6 @@ public without sharing class L_Integration_TL {
         
         Map<String, Object> jsonResponseData = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());
         sObject sObjAsset = Schema.getGlobalDescribe().get('Asset').newSObject();
-        system.debug('assetsList[0].L_VIN__c->'+ assetsList[0].L_VIN__c);
-        system.debug('jsonResponseData.get->'+ jsonResponseData.get('vin'));
-        system.debug('equals->'+ (assetsList[0].L_VIN__c == jsonResponseData.get('vin')));
         if(assetsList[0].L_VIN__c == jsonResponseData.get('vin')){
             for(L_CalloutMappingCMDT__mdt fieldMapData : assetCalloutMappingList){
                 sObjAsset.put(fieldMapData.L_FieldAPIName__c,jsonResponseData.get(fieldMapData.L_JSONAttributeName__c));

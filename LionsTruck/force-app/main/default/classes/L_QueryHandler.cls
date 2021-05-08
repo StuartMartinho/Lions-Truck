@@ -99,7 +99,7 @@ public inherited sharing class L_QueryHandler {
         List<Asset> assetList = new List<Asset>();
         
         try{
-            assetList = [SELECT Id, Name, L_VIN__c FROM Asset WHERE Id IN :ids AND L_VIN__c != ''];
+            assetList = [SELECT Id, Name, L_VIN__c, SerialNumber FROM Asset WHERE Id IN :ids AND L_VIN__c != ''];
         }catch(Exception ex){
             throw ex;
         }

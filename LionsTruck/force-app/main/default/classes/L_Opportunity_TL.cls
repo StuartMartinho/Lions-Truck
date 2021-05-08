@@ -20,7 +20,7 @@ public without sharing class L_Opportunity_TL {
         for (Integer i = 0; i < oppLIObj.Quantity; i++) {
             assetsToCreate.add(new Asset(Name=oppLIObj.Product2.Name, AccountId=oppLIObj.Opportunity.AccountId, Product2Id=oppLIObj.Product2Id,
                                          L_PS__c=oppLIObj.Product2.L_PS__c, L_Tonnage__c=oppLIObj.Product2.L_Tonnage__c, PurchaseDate=System.Today(),
-                                         L_InitialService__c=oppLIObj.L_AddedService__c));
+                                         L_InitialService__c=oppLIObj.L_AddedService__c, SerialNumber=L_GuidUtility.newGuid()));
         }
     }
     
