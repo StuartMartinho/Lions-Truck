@@ -1,5 +1,11 @@
 public without sharing class L_Opportunity_TL {
-    
+
+
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: This method is used create a new Assets whenever a Opportuny is set as Closed Won
+    **************************************************************************************************/
     public static void processClosedWonOpportunities(Map<Id, Opportunity> oppMap){
         
         if(oppMap.IsEmpty()){
@@ -16,6 +22,11 @@ public without sharing class L_Opportunity_TL {
         insert assetsToCreate;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: This method is used to populate an Asset list, depending on the provided Opportinity Li obj data
+    **************************************************************************************************/
     private static void createAsset(OpportunityLineItem oppLIObj, List<Asset> assetsToCreate){        
         for (Integer i = 0; i < oppLIObj.Quantity; i++) {
             assetsToCreate.add(new Asset(Name=oppLIObj.Product2.Name, AccountId=oppLIObj.Opportunity.AccountId, Product2Id=oppLIObj.Product2Id,
@@ -24,6 +35,11 @@ public without sharing class L_Opportunity_TL {
         }
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To filter only the opportunities that were set to Close Won status
+    **************************************************************************************************/
     public static Map<Id, Opportunity> filterClosedWonOpps(Map<Id, Opportunity> oldOppMap, Map<Id, Opportunity> newOppMap){
         Map<Id, Opportunity> mapToReturn = new Map<Id, Opportunity>();
         for(Opportunity oppObj : newOppMap.values()){

@@ -1,5 +1,10 @@
 public class L_ServiceInteraction_TL {
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To update Asset fields whenever a new Service Interaction is createdS
+    **************************************************************************************************/
     public static void updateAssetDetails(List<L_ServiceInteraction__c> serviceInteractionList){
         
         Set<Id> assetIDs = getAssetsIds(serviceInteractionList);
@@ -14,6 +19,11 @@ public class L_ServiceInteraction_TL {
         update assetsToUpdate;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: get Asset Ids from ServiceInteraction List
+    **************************************************************************************************/
     private static Set<Id> getAssetsIds(List<L_ServiceInteraction__c> serviceInteractionList){
         Set<Id> assetIds = new Set<Id>();
         

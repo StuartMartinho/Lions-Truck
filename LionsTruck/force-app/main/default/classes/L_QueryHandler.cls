@@ -1,5 +1,10 @@
 public inherited sharing class L_QueryHandler {
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch  OppLI per Opportunity Id map, using OppLIs Ids
+    **************************************************************************************************/
     public static Map<Id, List<OpportunityLineItem>> getOppLIPerOpportunityParentId(Set<Id> oppIds){
         
         List<OpportunityLineItem> oppLIsFromDB = new List<OpportunityLineItem>();
@@ -21,7 +26,12 @@ public inherited sharing class L_QueryHandler {
         }
         return oppLIsPerOppIdMap;
     }
-    
+
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch  Opportunities Map using opportunity Ids
+    **************************************************************************************************/
     public static Map<Id, Opportunity> getOpportunitiesMapById(Set<Id> oppIds){
         
         Map<Id, Opportunity> mapToReturn;
@@ -33,6 +43,11 @@ public inherited sharing class L_QueryHandler {
         return mapToReturn;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch Opportunities Line Item List using opportunity Ids
+    **************************************************************************************************/
     public static List<OpportunityLineItem> getOppLIByOppIdList(Set<Id> oppIds){
         List<OpportunityLineItem> listToReturn; 
         try{
@@ -45,6 +60,11 @@ public inherited sharing class L_QueryHandler {
         return listToReturn;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch Opportunities Line Item List using Opportunity Line Items Ids
+    **************************************************************************************************/
     public static List<OpportunityLineItem> getOppLIList(Set<Id> oppLiIds){
         List<OpportunityLineItem> listToReturn; 
         try{
@@ -55,6 +75,11 @@ public inherited sharing class L_QueryHandler {
         return listToReturn;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch  PrinceBookEntries using Pricebook Ids
+    **************************************************************************************************/
     public static List<PricebookEntry> getPricebookEntriesFromPricebookId(List<Id> pbIds){
         List<PricebookEntry> listToReturn; 
         try{
@@ -65,12 +90,16 @@ public inherited sharing class L_QueryHandler {
         return listToReturn;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch Orders by Opportunity Id, using Opportunity Ids
+    **************************************************************************************************/
     public static Map<id, List<Order>> getOrdersByOpportunityIdMap(Set<Id> oppIds){
         Map<id, List<Order>> mapToReturn = new Map<id, List<Order>>(); 
         try{
             List<Order> orderList = [SELECT Id, Status, OpportunityId FROM Order WHERE OpportunityId IN :oppIds];
             for(Order orderObj : orderList){
-                system.debug('orderObj->'+orderObj);
                 if(mapToReturn.containsKey(orderObj.OpportunityId)){
                     mapToReturn.get(orderObj.OpportunityId).add(orderObj);
                 }else{
@@ -83,6 +112,11 @@ public inherited sharing class L_QueryHandler {
         return mapToReturn;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch Assets List using Account Ids
+    **************************************************************************************************/
     public static List<Asset> getAssetsByAccountIds(Set<Id> accountIds){
         List<Asset> assetList = new List<Asset>();
         
@@ -95,6 +129,11 @@ public inherited sharing class L_QueryHandler {
         return assetList;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch Assets List using Account Ids and filtered by no blank VIN values
+    **************************************************************************************************/
     public static List<Asset> getAssetsWithVINByIds(Set<Id> ids){
         List<Asset> assetList = new List<Asset>();
         
@@ -107,6 +146,11 @@ public inherited sharing class L_QueryHandler {
         return assetList;
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Fetch CMDT callout List using the Object Name field
+    **************************************************************************************************/
     public static List<L_CalloutMappingCMDT__mdt> getCalloutMapping(String objectName){
         
         List<L_CalloutMappingCMDT__mdt> listToReturn = new List<L_CalloutMappingCMDT__mdt>();

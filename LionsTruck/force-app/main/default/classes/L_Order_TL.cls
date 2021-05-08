@@ -1,5 +1,10 @@
 public without sharing class L_Order_TL {
 
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: This method is used to Create Order Items whenever a Order is created.
+    **************************************************************************************************/
     public static void createOrderItems(List<Order> ordersList){
         Set<Id> oppIDs = getOpportunityIdsFromOrders(ordersList);  
         List<OrderItem> orderItemsInsert = new List<OrderItem>();
@@ -21,41 +26,13 @@ public without sharing class L_Order_TL {
         
         insert orderItemsInsert;        
     }
-    
-    
-    private static Set<Id> getOpportunityIdsFromOrders(List<Order> ordersList) {
-        
-        Set<Id> oppSetIds = new Set<Id>();
-        
-        for(Order orderObj : ordersList){
-            oppSetIds.add(orderObj.OpportunityId);
-        }
-        
-        return oppSetIds;
-    }
-    
-    private static Map<Id,Id> getPricebookPerOrderMap(List<Order> ordersList) {
-        
-        Map<Id,Id> mapToReturn = new Map<Id,Id>();
-        
-        for(Order orderObj : ordersList){
-            mapToReturn.put(orderObj.id, orderObj.Pricebook2Id);
-        }
-        
-        return mapToReturn;
-    }
-    
-    private static Id getPricebookEntryId(List<PricebookEntry> pBEntryList, Id productId, Id pricebookId) {
-        
-        for(PricebookEntry pbEntryObj : pBEntryList){
-            if(pbEntryObj.Product2Id == productId && pbEntryObj.Pricebook2Id == pricebookId){
-                return pbEntryObj.id;
-            }
-        }
-        
-        return null;
-    }
-    
+
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To update a Opportunity to Closed Won status, whenever all the child orders, are set to
+    Received status.
+    **************************************************************************************************/
     public static void closeOpportunity(List<Order> ordersList){
         
         if(ordersList.isEmpty())
@@ -91,6 +68,54 @@ public without sharing class L_Order_TL {
         
     }
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To get OpportunityIds Set from the given Order list.
+    **************************************************************************************************/
+    private static Set<Id> getOpportunityIdsFromOrders(List<Order> ordersList) {
+        
+        Set<Id> oppSetIds = new Set<Id>();
+        
+        for(Order orderObj : ordersList){
+            oppSetIds.add(orderObj.OpportunityId);
+        }
+        
+        return oppSetIds;
+    }
+    
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To get Pricebooks per order from the given Order list.
+    **************************************************************************************************/
+    private static Map<Id,Id> getPricebookPerOrderMap(List<Order> ordersList) {
+        
+        Map<Id,Id> mapToReturn = new Map<Id,Id>();
+        
+        for(Order orderObj : ordersList){
+            mapToReturn.put(orderObj.id, orderObj.Pricebook2Id);
+        }
+        
+        return mapToReturn;
+    }
+    
+    private static Id getPricebookEntryId(List<PricebookEntry> pBEntryList, Id productId, Id pricebookId) {
+        
+        for(PricebookEntry pbEntryObj : pBEntryList){
+            if(pbEntryObj.Product2Id == productId && pbEntryObj.Pricebook2Id == pricebookId){
+                return pbEntryObj.id;
+            }
+        }
+        
+        return null;
+    }
+    
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: Set Opportunities to Closed Won status.
+    **************************************************************************************************/
     private static void setOppsToClose(List<Opportunity> oppList)
     {
         for(Opportunity oppObj : oppList){
@@ -98,11 +123,16 @@ public without sharing class L_Order_TL {
         }
     }
     
-    public static List<Order> filterPaidOrders(List<Order> orderList)
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To Filter Orders that were changed to Received status
+    **************************************************************************************************/
+    public static List<Order> filterReceivedOrders(List<Order> orderList)
     {
         List<Order> listToReturn = new List<Order>();
         for(Order orderObj : orderList){
-            if(orderObj.Status.equalsIgnoreCase(L_Constants.ORDERPAID_STATUS)){
+            if(orderObj.Status.equalsIgnoreCase(L_Constants.ORDERRECEIVED_STATUS)){
                 listToReturn.add(orderObj);
             }
         }

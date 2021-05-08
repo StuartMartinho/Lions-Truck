@@ -1,5 +1,11 @@
 public without sharing class L_OpportunityLineItem_TL {
     
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: This method is used to recalculate the Opportunity Parent quantities and values,
+     whenever a new Opportunity LI is created/updated.
+    **************************************************************************************************/
     public static void calculateOpportunityParentCounters(List<OpportunityLineItem> oppLIlist) {
         
         Set<Id> parentOppIDs = getOpportunityParentIds(oppLIlist);
@@ -29,7 +35,11 @@ public without sharing class L_OpportunityLineItem_TL {
         update opportunitiesMap.values();        
     }
     
-    
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: To get OpportunityIds Set from the given opportunities LI list.
+    **************************************************************************************************/
     private static Set<Id> getOpportunityParentIds(List<OpportunityLineItem> oppLIlist) {
         
         Set<Id> oppSetIds = new Set<Id>();
