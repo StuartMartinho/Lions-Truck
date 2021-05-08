@@ -156,8 +156,9 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Asset Truck Service</label>
     <nameField>
+        <displayFormat>ATS-{0000}</displayFormat>
         <label>Asset Truck Services Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Asset Truck Services</pluralLabel>
     <searchLayouts></searchLayouts>

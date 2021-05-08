@@ -27,8 +27,7 @@ public with sharing class L_OrderHandler extends L_TriggerHandler {
 	}
 	
 	public override void afterUpdate() {
-        List<Order> paidOrders = L_Order_TL.filterPaidOrders(newList);
-        L_Order_TL.closeOpportunity(L_Order_TL.filterPaidOrders(paidOrders));
+        L_Order_TL.closeOpportunity(L_Order_TL.filterReceivedOrders(newList));
 	}
 
 	/*

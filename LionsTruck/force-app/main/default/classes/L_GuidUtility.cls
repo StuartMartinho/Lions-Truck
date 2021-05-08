@@ -2,6 +2,11 @@ public class L_GuidUtility {
 
     private static String availableChars = '0123456789abcdef';
 
+    /*************************************************************************************************
+    * @Author:      Stuart Martinho
+    * @Date:       07/05/2021
+    * @Description: This method is used to generate a random GUID value.
+    **************************************************************************************************/
     public static String newGuid() {
 
         String returnValue = '';

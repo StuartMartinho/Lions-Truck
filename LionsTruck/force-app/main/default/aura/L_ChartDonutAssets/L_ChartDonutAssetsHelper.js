@@ -16,9 +16,11 @@
                 let val = response.getReturnValue() ;
                 var labelset=[] ;
                 var dataset=[] ;
+                var counter = 0;
                 val.forEach(function(key) {
                     labelset.push(key.label) ; 
-                    dataset.push(key.count) ; 
+                    dataset.push(key.count) ;
+                    counter += key.count;
                 });
                 
                 var ctx = component.find('donut-chart').getElement().getContext('2d');
@@ -35,7 +37,7 @@
                     options: {
                         title: {
                             display: true,
-                            text: 'Trucks Purchased by Model'
+                            text: 'Trucks Purchased by Model' + ' (' + counter + ')'
                         }
                     }
                 });
